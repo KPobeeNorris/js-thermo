@@ -1,0 +1,18 @@
+# frozen_string_literal: true
+source "https://rubygems.org"
+
+source 'https://rubygems.org'
+
+ruby '2.2.3'
+
+gem 'sinatra'
+gem 'capybara'
+gem 'rspec-sinatra'
+gem 'sinatra-flash'
+gem 'rspec'
+gem 'rake'
+gem 'coveralls', require: false
+
+group :test do
+  gem 'database_cleaner'
+end
