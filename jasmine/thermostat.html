@@ -15,8 +15,22 @@
     <h5>ON</h5>
     <button id="reset">Reset Temperature</button>
     <h3 id="energy_usage"></h3>
+    <p><span id='weather'></span></p>
+    <p><span id='temp'></span></p>
+
     <script src="jquery.js"></script>
     <script src="application.js"></script>
+
+    <script>
+    var weather = new XMLHttpRequest();
+    weather.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=6f5342188239bb216c80d93c7bc96475", false)
+    weather.send();
+    var r = JSON.parse(weather.response);
+    var temp = "Current temperature: " + r.main.temp + " celcius" + "<br/>";
+    var weather = "Current location: " + r.name + "<br/>";
+    document.getElementById("temp").innerHTML = temp;
+    document.getElementById("weather").innerHTML = weather;
+    </script>
 
   </body>
 </html>
