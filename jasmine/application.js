@@ -50,3 +50,25 @@ jQuery(document).ready(function () {
   }
 
 });
+
+var weather = new XMLHttpRequest();
+weather.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=london,uk&units=metric&appid=6f5342188239bb216c80d93c7bc96475", false);
+weather.send();
+var r = JSON.parse(weather.response);
+var temp = "Current temperature: " + r.main.temp + " celcius" + "<br/>";
+var weather = "Current location: " + r.name + "<br/>";
+document.getElementById("temp").innerHTML = temp;
+document.getElementById("weather").innerHTML = weather;
+
+$("#form").submit(function(stop) {
+  stop.preventDefault();
+  var city = $("#city").val();
+  var second = new XMLHttpRequest();
+  second.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=6f5342188239bb216c80d93c7bc96475", false);
+  second.send();
+  var r = JSON.parse(second.response);
+  var temp = "Current temperature: " + r.main.temp + " celcius" + "<br/>";
+  var weather = "Current location: " + r.name + "<br/>";
+  document.getElementById("temp").innerHTML = temp;
+  document.getElementById("weather").innerHTML = weather;
+});
